@@ -11,7 +11,7 @@ from src.embeddings.word2vec import Word2VecModel, Word2VecModel2
 from src.embeddings.lda import LDA
 
 
-n_splits = 30
+n_splits = 10
 list_file_path = os.path.join(LISTS_DIRECTORY, "pdb_list_5481.txt")
 pdb_list = read_list(list_file_path)
 

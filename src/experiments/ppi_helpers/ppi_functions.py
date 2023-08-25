@@ -2,6 +2,7 @@ import os
 import numpy as np
 from tqdm import tqdm
 from sklearn import metrics
+import random
 
 from src.datasets.pdb import PDB
 from src.utilities import read_list
@@ -26,6 +27,11 @@ def sample_and_mean(flattened_distance_array, pairs):
     distance_sample = np.random.choice(flattened_distance_array, pairs, replace=True)
 
     return np.mean(distance_sample)
+
+def sample_and_mean_ttest(flattened_distance_array, pairs, true_mean):
+    distance_sample = np.random.choice(flattened_distance_array, pairs, replace=True)
+
+    return (np.mean(distance_sample)- 33.02) / (np.std(distance_sample) / np.sqrt(pairs))
 
 def make_doc_list(pdb_list):
     receptor_list = [i.split("_")[0] + "_" + i.split("_")[1] for i in pdb_list if len(i.split("_")) == 3]
